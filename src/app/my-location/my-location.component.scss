@@ -1,11 +1,10 @@
 mat-card {
     background-color: #FFFF;
     width: 50%;
-    height: 350px
+    height: 400px
 }
 
 mat-card-header {
-    // display: flex;
     img {
         margin-right: 1rem;
     }
@@ -16,34 +15,63 @@ mat-card-header {
     }
 }
 
-mat-card-subtitle {
-    position: absolute;
-    top: 50%;
-    left: 3rem;
+mat-card-content {
+    display: flex;
+    height: 290px;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+    mat-card-subtitle {
+        width: 40%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-right: 1rem;
+    }
+    article {
+        width: 54%;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column-reverse;
+        div {
+            position: relative;
+            border: 0.05px solid lightgrey;
+            padding-left: 0.5rem;
+            margin-top: 1rem;
+            width: 95%;
+            h4 {
+                line-height: 0;
+            }
+            p {
+                line-height: 0 !important;
+            }
+            i {
+                font-size: 12px;
+                color: darkgray;
+                line-height: 0;
+            }
+        }
+    }
 }
 
-mat-card-content {
-    overflow-x: hidden;
-    position: absolute;
-    right: 3rem;
-    height: 290px;
-    div {
-        position: relative;
-        width: 20rem;
-        border: 0.1px solid lightgrey;
-        // line-height: 0;
-        padding-left: 0.5rem;
-        margin-top: 1rem;
-        h4 {
-            line-height: 0;
+mat-card-actions {
+    display: flex;
+    button {
+        color: white;
+        width: 300px;
+        background-color: #33A9BF;
+        font-size: 1rem;
+        height: 2.5rem;
+        border-radius: 30px;
+        border: none;
+        &:focus {
+            display: none;
         }
-        p {
-            line-height: 0 !important;
+        img {
+            padding-left: 1rem;
+            filter: invert(1);
         }
-        i {
-            font-size: 12px;
-            color: darkgray;
-            line-height: 0;
+        &:hover {
+            cursor: pointer;
         }
     }
 }
