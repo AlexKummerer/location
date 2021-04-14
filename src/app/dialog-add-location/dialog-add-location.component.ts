@@ -12,4 +12,7 @@ export class DialogAddLocationComponent implements OnInit {
   addressSelected = false;
 
   ngOnInit(): void {}
+  changeLocation() {
+    this.addressSelected = !this.addressSelected;
+  }
 }

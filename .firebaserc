@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "location-finder-5bd83": {
+      "hosting": {
+        "location": [
+          "location-finder-5bd83"
+        ]
+      }
+    }
+  }
+}
