@@ -1,21 +1,11 @@
 <div class="bg-blue central">
-
-
     <mat-card>
-
         <mat-card-header>
-            <img src="../../assets/img/arrow.svg">
+            <img src="../../assets/img/arrow.svg" />
             <mat-card-title> Mein Standort</mat-card-title>
         </mat-card-header>
 
-
-
-
-
         <mat-card-content>
-
-
-
             <mat-card-subtitle>Meine Standorte</mat-card-subtitle>
 
             <article>
@@ -40,17 +30,13 @@
                     <p>Obstmarkt 5, 90403 Nürnberg</p>
                     <i>Bayern, Deutschland</i>
                 </div>
-
             </article>
-
         </mat-card-content>
 
         <mat-card-actions class="central">
-            <button class="central" mat-button>Neuen Standort hinzufügen <img src="../../assets/img/plus.svg">  </button>
-
+            <button class="central btn-blue" mat-raised-button (click)="openDialog()">
+        Neuen Standort hinzufügen <img src="../../assets/img/plus.svg" />
+      </button>
         </mat-card-actions>
     </mat-card>
-
-
-
 </div>

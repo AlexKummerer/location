@@ -21,3 +21,20 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.btn-blue {
+    background-color: #33A9BF;
+    color: white;
+    img {
+        filter: invert(1);
+    }
+}
+
+.btn-light {
+    background-color: #8fefff;
+    opacity: 0.25;
+    // color: #33A9BF;
+    // img {
+    //     filter: invert(1);
+    // }
+}
