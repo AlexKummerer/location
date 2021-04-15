@@ -1,43 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import {startWith, map} from 'rxjs/operators';
-
+import { Location } from 'src/models/location.class';
+import { AngularFirestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-dialog-add-location',
   templateUrl: './dialog-add-location.component.html',
   styleUrls: ['./dialog-add-location.component.scss'],
 })
 export class DialogAddLocationComponent implements OnInit {
-  streets: any;
-  constructor(public dialogRef: MatDialogRef<DialogAddLocationComponent>) {}
-  // API_KEY  = ''https://maps.googleapis.com/maps/api/geocode/json?address=' +
-  // this.address +
-  // '&key=' +
-  // apiKey;  '
-  control = new FormControl();
-  autocompleteInput: string;
+  constructor(
+    public dialogRef: MatDialogRef<DialogAddLocationComponent>,
+    private firestore: AngularFirestore
+  ) {}
+
+  location = new Location();
+
   addressSelected = false;
   address: string = '';
-  addreses = []
-  filteredAddresses: Observable<string[]>;
-  ngOnInit(): void {
-    this.filteredAddresses = this.control.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    )
-  }
-  private _filter(value: any) {
-    const filterValue = this._normalizeValue(value);
-    return this.addreses.filter(address => this._normalizeValue(address).includes(filterValue));
-  }
+  addreses = [];
 
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
-  }
+  ngOnInit(): void {}
+
   changeLocation() {
     this.addressSelected = !this.addressSelected;
+  }
+  displayFn(address): string {
+    this.addressSelected = true;
+    console.log(this.addressSelected);
+
+    return address && address.formatted_address
+      ? address.formatted_address
+      : '';
   }
 
   async getAddress(data) {
@@ -48,15 +42,20 @@ export class DialogAddLocationComponent implements OnInit {
       this.address +
       '&key=' +
       apiKey;
-    fetch(url)
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        this.addreses = json.results;
-        console.log(this.addreses);
-      });
+    let response = await fetch(url);
+    let responseBody = await response.json();
+    this.addreses = responseBody.results;
+    console.log(this.addreses);
+  }
+
+  saveLocation() {
+    console.log('current User', this.location);
+    this.firestore
+    .collection('locations')
+    .add(this.location.toJSON())
+    .then((result: any) => {
+      console.log('add Location', result);
+      this.dialogRef.close();
+    });
   }
 }
-
-

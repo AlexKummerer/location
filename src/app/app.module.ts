@@ -13,6 +13,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -28,6 +31,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatButtonModule,
     GooglePlaceModule,
     MatAutocompleteModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
 
   ],
   providers: [],

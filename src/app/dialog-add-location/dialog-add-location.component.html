@@ -11,27 +11,28 @@
             <p (click)="changeLocation()"><b> Ort ändern </b></p>
         </div>
     </div>
-    <form>
-        <mat-form-field *ngIf="!addressSelected">
-            <mat-label>Suchen</mat-label>
-            <input matInput [options]='options' (keyup)="getAddress($event.target.value)" placeholder="Search for a street" [formControl]="control" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option [value]="address" *ngFor="let address of addresses | async">
-                    {{ address.formatted_address }}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-    </form>
-    <mat-form-field *ngIf="addressSelected">
+
+    <mat-form-field *ngIf="!addressSelected" appearance="fill">
+        <mat-label>Suchen</mat-label>
+        <input matInput type="text" (keyup)="getAddress($event.target.value)" [matAutocomplete]="auto" [(ngModel)]="location.results" required />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let address of addreses" [value]="address">
+                {{ address.formatted_address }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
         <mat-label>Name für gewählten Standort vergeben</mat-label>
-        <input matInput />
+        <input type="text" [(ngModel)]="location.location" matInput required />
     </mat-form-field>
 </div>
+
 <div mat-dialog-actions class="buttons central">
     <button class="btn-light" mat-raised-button>
     Abbrechen <img src="../../assets/img/cross.svg " />
   </button>
-    <button class="btn-blue" mat-raised-button cdkFocusInitial>
+    <button class="btn-blue" mat-raised-button cdkFocusInitial (click)="saveLocation()">
     Speichern <img src="../../assets/img/checkmark.svg " />
   </button>
 </div>

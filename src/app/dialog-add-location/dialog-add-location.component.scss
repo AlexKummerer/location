@@ -54,3 +54,11 @@ mat-form-field {
         }
     }
 }
+
+.toSelect {
+    border-bottom: 0.1px solid gray;
+    margin-bottom: 4px;
+    &:hover {
+        cursor: pointer;
+    }
+}
