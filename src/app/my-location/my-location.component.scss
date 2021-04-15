@@ -1,17 +1,22 @@
 mat-card {
-    background-color: #FFFF;
+    background-color: #ffff;
     width: 50%;
-    height: 400px
+    height: 440px;
 }
 
 mat-card-header {
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 1.5rem !important;
     img {
-        margin-right: 1rem;
+        margin-left: 1rem;
     }
     mat-card-title {
         font-size: 1rem;
         display: flex;
         margin: 0;
+        font-weight: 600 !important;
     }
 }
 
@@ -20,12 +25,14 @@ mat-card-content {
     height: 290px;
     margin-bottom: 2rem;
     margin-left: 3rem;
-    mat-card-subtitle {
+    mat-card-title {
         width: 40%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         margin-right: 1rem;
+        font-weight: 800 !important;
+        font-size: 1rem;
     }
     article {
         width: 54%;
@@ -55,7 +62,10 @@ mat-card-content {
 
 mat-card-actions {
     display: flex;
-    background-color: #EBF6F9;
+    background-color: #ebf6f9;
+    margin: 0px !important;
+    padding: 1rem 0;
+    border-radius: 4px;
     button {
         width: 300px;
         font-size: 1rem;
@@ -71,5 +81,8 @@ mat-card-actions {
         &:hover {
             cursor: pointer;
         }
+    }
+    &:last-child {
+        padding-bottom: 1rem !important;
     }
 }

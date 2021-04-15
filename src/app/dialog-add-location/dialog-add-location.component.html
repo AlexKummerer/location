@@ -2,7 +2,7 @@
 <div mat-dialog-content>
     <p *ngIf="!addressSelected"><b> Adresse suchen </b></p>
 
-    <div class="selected" *ngIf="addressSelected">
+    <!-- <div class="selected" *ngIf="addressSelected">
         <div class="selected-location">
             <p>Limbacher Straße 12, 91126 Schwabach</p>
             <i>Bayern, Deutschland </i>
@@ -10,7 +10,7 @@
         <div class="change-location central">
             <p (click)="changeLocation()"><b> Ort ändern </b></p>
         </div>
-    </div>
+    </div> -->
 
     <mat-form-field *ngIf="!addressSelected" appearance="fill">
         <mat-label>Suchen</mat-label>
@@ -24,15 +24,15 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Name für gewählten Standort vergeben</mat-label>
-        <input type="text" [(ngModel)]="location.location" matInput required />
+        <input type="text" [(ngModel)]="location.location" matInput />
     </mat-form-field>
 </div>
 
 <div mat-dialog-actions class="buttons central">
-    <button class="btn-light" mat-raised-button>
+    <button class="btn-light" mat-raised-button (click)="dialogRef.close()">
     Abbrechen <img src="../../assets/img/cross.svg " />
   </button>
-    <button class="btn-blue" mat-raised-button cdkFocusInitial (click)="saveLocation()">
+    <button class="btn-blue" [disabled]="location.results.length == 0" mat-raised-button cdkFocusInitial (click)="saveLocation()">
     Speichern <img src="../../assets/img/checkmark.svg " />
   </button>
 </div>

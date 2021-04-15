@@ -20,19 +20,17 @@ export class MyLocationComponent implements OnInit {
 
   ngOnInit(): void {
     this.firestore
-    .collection('locations')
-    .valueChanges({ idField: 'customIdName' })
-    .subscribe((changes: any) => {
-      this.allLocations = changes;
-      console.log('changes ', this.allLocations);
-    });
-
-
+      .collection('locations')
+      .valueChanges({ idField: 'customIdName' })
+      .subscribe((changes: any) => {
+        this.allLocations = changes;
+        console.log('changes ', this.allLocations);
+      });
   }
 
   openDialog(): void {
     this.dialog.open(DialogAddLocationComponent, {
-      height: '300px',
+      height: '310px',
       width: '650px',
     });
   }

@@ -6,26 +6,23 @@
         </mat-card-header>
 
         <mat-card-content>
-            <mat-card-subtitle>Meine Standorte</mat-card-subtitle>
+            <mat-card-title> Meine Standorte </mat-card-title>
 
             <article>
                 <div *ngFor="let location of allLocations">
-                    <h4>{{ location.location }}</h4>
-                    <p>
-                        {{ location["results"]["address_components"]["1"]["short_name"] }} {{ location["results"]["address_components"]["0"]["short_name"] }} , {{ location["results"]["address_components"]["6"]["short_name"] }} {{ location["results"]["address_components"]["2"]["long_name"]
-                        }}
+                    <h4> <b> {{ location.location }}  </b> </h4>
+                    <p *ngIf="location['results'].address_components">
+                        {{ location.results.formatted_address }}
                     </p>
-                    <i>{{ location["results"]["address_components"]["4"]["long_name"] }},
-            {{ location["results"]["address_components"]["5"]["long_name"] }}</i
-          >
-        </div>
-      </article>
-    </mat-card-content>
 
-    <mat-card-actions class="central">
-      <button class="central btn-blue" mat-raised-button (click)="openDialog()">
+                </div>
+            </article>
+        </mat-card-content>
+
+        <mat-card-actions class="central">
+            <button class="central btn-blue" mat-raised-button (click)="openDialog()">
         Neuen Standort hinzufügen <img src="../../assets/img/plus.svg" />
       </button>
-    </mat-card-actions>
-  </mat-card>
+        </mat-card-actions>
+    </mat-card>
 </div>

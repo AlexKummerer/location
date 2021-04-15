@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
 html,
 body {
     height: 100%;
@@ -7,11 +9,11 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: "Quicksand", sans-serif !important;
 }
 
 .bg-blue {
-    background-color: #0F1223;
+    background-color: #0f1223;
     width: 100%;
     height: 100%;
 }
@@ -23,18 +25,21 @@ body {
 }
 
 .btn-blue {
-    background-color: #33A9BF;
+    background-color: #33a9bf;
     color: white;
-    img {
-        filter: invert(1);
-    }
 }
 
 .btn-light {
-    background-color: #8fefff;
-    opacity: 0.25;
-    // color: #33A9BF;
-    // img {
-    //     filter: invert(1);
-    // }
+    color: #33a9bf;
+    background-color: #c3f6ff;
+    // opacity: 0.25;
+}
+
+mat-card {
+    font-family: "Quicksand", sans-serif !important;
+    padding: 0 !important;
+}
+
+h4 {
+    font-family: "Inter", sans-serif !important;
 }

@@ -26,9 +26,6 @@ export class DialogAddLocationComponent implements OnInit {
     this.addressSelected = !this.addressSelected;
   }
   displayFn(address): string {
-    this.addressSelected = true;
-    console.log(this.addressSelected);
-
     return address && address.formatted_address
       ? address.formatted_address
       : '';
@@ -51,11 +48,11 @@ export class DialogAddLocationComponent implements OnInit {
   saveLocation() {
     console.log('current User', this.location);
     this.firestore
-    .collection('locations')
-    .add(this.location.toJSON())
-    .then((result: any) => {
-      console.log('add Location', result);
-      this.dialogRef.close();
-    });
+      .collection('locations')
+      .add(this.location.toJSON())
+      .then((result: any) => {
+        console.log('add Location', result);
+        this.dialogRef.close();
+      });
   }
 }
