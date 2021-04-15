@@ -9,34 +9,23 @@
             <mat-card-subtitle>Meine Standorte</mat-card-subtitle>
 
             <article>
-                <div>
-                    <h4>Office Nürnberg</h4>
-                    <p>Obstmarkt 2, 90403 Nürnberg</p>
-                    <i>Bayern, Deutschland</i>
-                </div>
+                <div *ngFor="let location of allLocations">
+                    <h4>{{ location.location }}</h4>
+                    <p>
+                        {{ location["results"]["address_components"]["1"]["short_name"] }} {{ location["results"]["address_components"]["0"]["short_name"] }} , {{ location["results"]["address_components"]["6"]["short_name"] }} {{ location["results"]["address_components"]["2"]["long_name"]
+                        }}
+                    </p>
+                    <i>{{ location["results"]["address_components"]["4"]["long_name"] }},
+            {{ location["results"]["address_components"]["5"]["long_name"] }}</i
+          >
+        </div>
+      </article>
+    </mat-card-content>
 
-                <div>
-                    <h4>Office Nürnberg</h4>
-                    <p>Obstmarkt 1, 90403 Nürnberg</p>
-                    <i>Bayern, Deutschland</i>
-                </div>
-                <div>
-                    <h4>Office Nürnberg</h4>
-                    <p>Obstmarkt 3, 90403 Nürnberg</p>
-                    <i>Bayern, Deutschland</i>
-                </div>
-                <div>
-                    <h4>Office Nürnberg</h4>
-                    <p>Obstmarkt 5, 90403 Nürnberg</p>
-                    <i>Bayern, Deutschland</i>
-                </div>
-            </article>
-        </mat-card-content>
-
-        <mat-card-actions class="central">
-            <button class="central btn-blue" mat-raised-button (click)="openDialog()">
+    <mat-card-actions class="central">
+      <button class="central btn-blue" mat-raised-button (click)="openDialog()">
         Neuen Standort hinzufügen <img src="../../assets/img/plus.svg" />
       </button>
-        </mat-card-actions>
-    </mat-card>
+    </mat-card-actions>
+  </mat-card>
 </div>
