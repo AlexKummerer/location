@@ -11,10 +11,17 @@
             <p (click)="changeLocation()"><b> Ort ändern </b></p>
         </div>
     </div>
-    <mat-form-field *ngIf="!addressSelected">
-        <mat-label>Suchen</mat-label>
-        <input matInput />
-    </mat-form-field>
+    <form>
+        <mat-form-field *ngIf="!addressSelected">
+            <mat-label>Suchen</mat-label>
+            <input matInput [options]='options' (keyup)="getAddress($event.target.value)" placeholder="Search for a street" [formControl]="control" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option [value]="address" *ngFor="let address of addresses | async">
+                    {{ address.formatted_address }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
     <mat-form-field *ngIf="addressSelected">
         <mat-label>Name für gewählten Standort vergeben</mat-label>
         <input matInput />
