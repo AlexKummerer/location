@@ -12,12 +12,12 @@ export class DialogAddLocationComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogAddLocationComponent>,
     private firestore: AngularFirestore,
-    private FindLocationService: FindLocationService
+    public findLocationService: FindLocationService
   ) {}
 
   location: Location = new Location();
 
- addresses: string = '';
+  addresses: string = '';
 
   ngOnInit(): void {}
 
@@ -25,10 +25,6 @@ export class DialogAddLocationComponent implements OnInit {
     return address && address.formatted_address
       ? address.formatted_address
       : '';
-  }
-
-  getAddress(data) {
-     this.FindLocationService.getAddress(data);
   }
 
   saveLocation() {

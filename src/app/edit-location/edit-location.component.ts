@@ -1,7 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Location } from 'src/models/location.class';
+import { FindLocationService } from '../find-location.service';
 
 @Component({
   selector: 'app-edit-location',
@@ -16,7 +17,8 @@ export class EditLocationComponent implements OnInit {
   location: Location = new Location();
   constructor(
     public dialogRef: MatDialogRef<EditLocationComponent>,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    public findLocationService: FindLocationService
   ) {}
 
   ngOnInit(): void {
@@ -41,19 +43,6 @@ export class EditLocationComponent implements OnInit {
       : '';
   }
 
-  async getAddress(data) {
-    this.address = data;
-    let apiKey = 'AIzaSyDyAbpvB9qmUgN6gfNf0bB_uZ5YSJueRIk';
-    const url =
-      'https://maps.googleapis.com/maps/api/geocode/json?address=' +
-      this.address +
-      '&key=' +
-      apiKey;
-    let response = await fetch(url);
-    let responseBody = await response.json();
-    this.addresses = responseBody.results;
-    console.log(this.addresses);
-  }
   updateLocation() {
     this.firestore
       .collection('locations')

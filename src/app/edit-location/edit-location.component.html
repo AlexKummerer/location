@@ -4,9 +4,9 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Suchen</mat-label>
-        <input matInput type="text" required (keyup)="getAddress($event.target.value)" [(ngModel)]="location.results" [matAutocomplete]="auto" />
+        <input matInput type="text" required (keyup)="findLocationService.getAddress($event.target.value)" [(ngModel)]="location.results" [matAutocomplete]="auto" />
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-            <mat-option *ngFor="let address of addresses" [value]="address">
+            <mat-option *ngFor="let address of findLocationService.addresses" [value]="address">
                 {{ address.formatted_address }}
             </mat-option>
         </mat-autocomplete>
