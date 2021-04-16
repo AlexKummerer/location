@@ -1,18 +1,8 @@
 <h3 mat-dialog-title><b> Neuen Standort hinzufügen </b></h3>
 <div mat-dialog-content>
-    <p *ngIf="!addressSelected"><b> Adresse suchen </b></p>
+    <p><b> Adresse suchen </b></p>
 
-    <!-- <div class="selected" *ngIf="addressSelected">
-        <div class="selected-location">
-            <p>Limbacher Straße 12, 91126 Schwabach</p>
-            <i>Bayern, Deutschland </i>
-        </div>
-        <div class="change-location central">
-            <p (click)="changeLocation()"><b> Ort ändern </b></p>
-        </div>
-    </div> -->
-
-    <mat-form-field *ngIf="!addressSelected" appearance="fill">
+    <mat-form-field appearance="fill">
         <mat-label>Suchen</mat-label>
         <input matInput type="text" (keyup)="getAddress($event.target.value)" [matAutocomplete]="auto" [(ngModel)]="location.results" required />
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
