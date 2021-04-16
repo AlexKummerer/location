@@ -92,10 +92,13 @@ mat-card-actions {
 
 @media (max-width: 700px) {
     mat-card {
+        width: 90%;
+        height: 90%;
         mat-card-content {
             flex-direction: column;
             align-items: center;
             margin-left: 0px !important;
+            height: 75%;
             mat-card-title {
                 padding: 1rem 0;
                 width: 150px;

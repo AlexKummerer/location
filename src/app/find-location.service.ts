@@ -8,6 +8,13 @@ export class FindLocationService {
   address: string = '';
   constructor() {}
 
+  /**
+   *
+   * get and serach address in google API
+   *
+   * @param data value of the inputfied
+   *
+   */
   async getAddress(data) {
     this.address = data;
     let apiKey = 'AIzaSyDyAbpvB9qmUgN6gfNf0bB_uZ5YSJueRIk';

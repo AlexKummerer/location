@@ -21,12 +21,25 @@ export class DialogAddLocationComponent implements OnInit {
 
   ngOnInit(): void {}
 
+
+  /**
+   * select option address
+   * 
+   * @param address : selected address
+   * @returns address.formatted_address
+   */
   displayFn(address): string {
     return address && address.formatted_address
       ? address.formatted_address
       : '';
   }
 
+
+  /**
+   * 
+   * save/create Location
+   * 
+   */
   saveLocation() {
     console.log('current User', this.location);
     this.firestore

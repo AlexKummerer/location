@@ -21,6 +21,11 @@ export class MyLocationComponent implements OnInit {
     this.getLocations();
   }
 
+/**
+ * 
+ *  get Locations from firebase
+ * 
+ */
   getLocations() {
     this.firestore
       .collection('locations')
@@ -31,19 +36,33 @@ export class MyLocationComponent implements OnInit {
       });
   }
 
+
+/**
+ * 
+ * open Dialog to add a new Location
+ * 
+ */
   openAddLocationDialog(): void {
     this.dialog.open(DialogAddLocationComponent, {
-      height: '310px',
+      height: '400px',
       width: '650px',
     });
   }
 
+
+  /**
+   * 
+   * @param customIdName : Id of this location 
+   * 
+   * open Dialo to edit a location
+   * 
+   */
   editLocation(customIdName) {
     this.locationId = customIdName;
     console.log('locationId', this.locationId);
 
     const dialogRef = this.dialog.open(EditLocationComponent, {
-      height: '310px',
+      height: '400px',
       width: '650px',
     });
     dialogRef.componentInstance.locationId = customIdName;

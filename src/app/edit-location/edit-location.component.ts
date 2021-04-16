@@ -26,6 +26,12 @@ export class EditLocationComponent implements OnInit {
     this.getLocation();
   }
 
+
+  /**
+   * 
+   * get clicked Location
+   * 
+   */
   getLocation() {
     this.firestore
       .collection('locations')
@@ -37,12 +43,26 @@ export class EditLocationComponent implements OnInit {
       });
   }
 
+
+
+   /**
+   * select option address
+   * 
+   * @param address : selected address
+   * @returns address.formatted_address
+   */
   displayFn(address): string {
     return address && address.formatted_address
       ? address.formatted_address
       : '';
   }
 
+
+  /**
+   * 
+   * update the Location
+   * 
+   */
   updateLocation() {
     this.firestore
       .collection('locations')
@@ -53,6 +73,11 @@ export class EditLocationComponent implements OnInit {
       });
   }
 
+  /**
+   * 
+   * Delete the Location
+   * 
+   */
   deleteLocation() {
     this.firestore
       .collection('locations')

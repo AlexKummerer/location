@@ -22,7 +22,7 @@
     <button class="btn-light" mat-raised-button (click)="deleteLocation()">
     Löschen <img src="assets/img/cross.svg" />
   </button>
-    <button class="btn-blue" [disabled]="location.results.length == 0" mat-raised-button cdkFocusInitial (click)="updateLocation()">
+    <button class="btn-blue" [disabled]="location.results.length == 0" mat-raised-button cdkFocusInitial (touch)="updateLocation()" (click)="updateLocation()">
     Speichern <img src="assets/img/checkmark.svg" />
   </button>
 </div>
