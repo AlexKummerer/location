@@ -16,7 +16,7 @@
         <mat-label>Suchen</mat-label>
         <input matInput type="text" (keyup)="getAddress($event.target.value)" [matAutocomplete]="auto" [(ngModel)]="location.results" required />
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-            <mat-option *ngFor="let address of addreses" [value]="address">
+            <mat-option *ngFor="let address of addresses" [value]="address">
                 {{ address.formatted_address }}
             </mat-option>
         </mat-autocomplete>

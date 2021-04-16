@@ -1,37 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAddLocationComponent } from '../dialog-add-location/dialog-add-location.component';
 import { AngularFirestore } from '@angular/fire/firestore';
-
+import { Location } from 'src/models/location.class';
+import { EditLocationComponent } from '../edit-location/edit-location.component';
 @Component({
   selector: 'app-my-location',
   templateUrl: './my-location.component.html',
   styleUrls: ['./my-location.component.scss'],
 })
 export class MyLocationComponent implements OnInit {
-  location: string;
+  location: Location = new Location();
   allLocations = [];
+  locationId: string = '';
+  customIdName = '';
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore) {}
 
   ngOnInit(): void {
+    this.getLocations();
+  }
+
+  getLocations() {
     this.firestore
       .collection('locations')
       .valueChanges({ idField: 'customIdName' })
-      .subscribe((changes: any) => {
-        this.allLocations = changes;
+      .subscribe((location: any) => {
+        this.allLocations = location;
         console.log('changes ', this.allLocations);
       });
   }
 
-  openDialog(): void {
+  openAddLocationDialog(): void {
     this.dialog.open(DialogAddLocationComponent, {
       height: '310px',
       width: '650px',
     });
+  }
+
+  editLocation(customIdName) {
+    this.locationId = customIdName;
+    console.log('locationId', this.locationId);
+
+    const dialogRef = this.dialog.open(EditLocationComponent, {
+      height: '310px',
+      width: '650px',
+    });
+    dialogRef.componentInstance.locationId = customIdName;
   }
 }

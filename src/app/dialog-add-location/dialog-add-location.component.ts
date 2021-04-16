@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Location } from 'src/models/location.class';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -14,11 +13,10 @@ export class DialogAddLocationComponent implements OnInit {
     private firestore: AngularFirestore
   ) {}
 
-  location = new Location();
-
+  location: Location = new Location();
   addressSelected = false;
   address: string = '';
-  addreses = [];
+  addresses: string = '';
 
   ngOnInit(): void {}
 
@@ -41,8 +39,8 @@ export class DialogAddLocationComponent implements OnInit {
       apiKey;
     let response = await fetch(url);
     let responseBody = await response.json();
-    this.addreses = responseBody.results;
-    console.log(this.addreses);
+    this.addresses = responseBody.results;
+    console.log(this.addresses);
   }
 
   saveLocation() {

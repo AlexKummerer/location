@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,10 +15,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-
+import { EditLocationComponent } from './edit-location/edit-location.component';
 
 @NgModule({
-  declarations: [AppComponent, MyLocationComponent, DialogAddLocationComponent],
+  declarations: [AppComponent, MyLocationComponent, DialogAddLocationComponent, EditLocationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,7 +32,6 @@ import { environment } from 'src/environments/environment';
     MatAutocompleteModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-
   ],
   providers: [],
   bootstrap: [AppComponent],

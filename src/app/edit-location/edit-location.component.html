@@ -1,0 +1,28 @@
+<h3 mat-dialog-title><b> Deinen Standort ändern </b></h3>
+<div mat-dialog-content class="mat-dialog-content">
+    <p><b> Standort ändern </b></p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Suchen</mat-label>
+        <input matInput type="text" required (keyup)="getAddress($event.target.value)" [(ngModel)]="location.results" [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let address of addresses" [value]="address">
+                {{ address.formatted_address }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Name für gewählten Standort vergeben</mat-label>
+        <input type="text" matInput [(ngModel)]="location.location" />
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="buttons central">
+    <button class="btn-light" mat-raised-button (click)="deleteLocation()">
+    Löschen <img src="assets/img/cross.svg" />
+  </button>
+    <button class="btn-blue" mat-raised-button cdkFocusInitial (click)='updateLocation()'>
+    Speichern <img src="assets/img/checkmark.svg" />
+  </button>
+</div>
